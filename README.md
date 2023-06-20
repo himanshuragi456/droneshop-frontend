@@ -1,5 +1,5 @@
 # DroneShop
-![alt text](https://github.com/racmathafidz/droneshop-frontend/blob/main/public/assets/images/screenshot/screely.png)
+![alt text](https://github.com/himanshuragi456/droneshop-frontend/blob/main/public/assets/images/screenshot/screely.png)
 
 ### About
 E-commerce website that sells best quality drones:helicopter:.\
