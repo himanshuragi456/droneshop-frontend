@@ -1,0 +1,46 @@
+{
+  "cart": [
+    {
+      "name": "Mini Drone",
+      "images": "assets/images/products/mini-drone.svg",
+      "price": "Rp18.775.000",
+      "amount": 1,
+      "status": "new"
+    },
+    {
+      "name": "Drone Light",
+      "images": "assets/images/products/light-drone.png",
+      "price": "Rp23.086.000",
+      "amount": 4,
+      "status": "new"
+    },
+    {
+      "name": "Phantom Drone",
+      "images": "assets/images/products/phantom-drone.svg",
+      "price": "Rp8.640.000",
+      "amount": 1,
+      "status": "new"
+    },
+    {
+      "name": "Redlight Drone",
+      "images": "assets/images/products/redlight-drone.jpeg",
+      "price": "Rp5.860.000",
+      "amount": 2,
+      "status": "old"
+    },
+    {
+      "name": "Smoky Drone",
+      "images": "assets/images/products/smoky-drone.jpeg",
+      "price": "Rp13.500.000",
+      "amount": 1,
+      "status": "old"
+    },
+    {
+      "name": "Imperial Drone",
+      "images": "assets/images/products/imperial-drone.jpeg",
+      "price": "Rp20.500.000",
+      "amount": 3,
+      "status": "old"
+    }
+  ]
+}

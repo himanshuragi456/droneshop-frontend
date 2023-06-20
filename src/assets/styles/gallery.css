@@ -1,0 +1,131 @@
+.gallery {
+  padding: 60px 100px 112px;
+  background-color: #F3F5FC;
+}
+
+.gallery-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.gallery-title > h1 {
+  color: #0A1329;
+  font-weight: 600;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-title > p {
+  color: #0A1329;
+  opacity: 0.55;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  text-align: center;  
+}
+
+.gallery-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px; 
+  row-gap: 18px;
+}
+
+.gallery-list-item {
+  display: flex;
+  flex-direction: column;   
+  background-color: #fff; 
+  border: 1px solid #E5E5E5;
+  border-radius: 20px;
+  padding: 22px;  
+  transition: 0.3s ease-in-out;
+}
+
+.gallery-list-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.gallery-list-item-image-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-list-item-image-container > img {
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;  
+  object-fit: cover;
+}
+
+.gallery-list-item-image-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 320px;
+  border-radius: 20px; 
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000;
+}
+
+.gallery-list-item-image-overlay-svg {
+  color: #fff;
+  opacity: 0.50;
+  width: 100px;  
+}
+
+.gallery-list-item-image-container:hover .gallery-list-item-image-overlay {
+  opacity: 0.60;
+}
+
+.gallery-list-item-description {
+  color: #0A1329;  
+  opacity: 0.55;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .gallery {
+    padding: 60px 24px 112px;    
+  }
+
+  .gallery-list-item-image-container > img {    
+    height: 180px;    
+  }
+  
+  .gallery-list-item-image-overlay {
+    height: 180px;    
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 640px) {
+  .gallery {
+    padding: 60px 24px 112px;    
+  }
+
+  .gallery-list {    
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .gallery-list-item-image-container > img {    
+    height: 180px;    
+  }
+  
+  .gallery-list-item-image-overlay {
+    height: 180px;    
+  }
+}

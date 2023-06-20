@@ -1,0 +1,22 @@
+{
+  "testimonials": [
+    {
+      "name": "Lucas Walker",
+      "images": "assets/images/testimonials/lucas.svg",
+      "job": "Content Creator",
+      "testimonial": "“With high resolution camera, picture become clear and beautiful. It’s so easy to operate drone.”"
+    },
+    {
+      "name": "Jessica Obrien",
+      "images": "assets/images/testimonials/jessica.svg",
+      "job": "Director Film",
+      "testimonial": "“Taking high view video become easy and faster. Battery perfomance really helping for making film.”"
+    },
+    {
+      "name": "Lisa Miller",
+      "images": "assets/images/testimonials/lisa.svg",
+      "job": "Content WQCreator",
+      "testimonial": "“Making video content for my trip vlog so powerful and wonderful. Love the video quality.”"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+.google-button {
+  display: flex;
+  align-items: center;
+  background-color: #3B82F6;
+  color: #fff;
+  border: 0px;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.google-button:hover {
+  background-color: #005ef5;
+}
+
+.google-button-logo {
+  border-radius: 10px;
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.google-button-logo > img {
+  padding: 8px 8px 4px;
+  width: 28px;
+}
+
+.google-button-text {
+  display: flex;
+  flex-grow: 1;
+  width: full;
+  justify-content: center;
+}
+
+.google-button-text > p {
+  font-size: 18px;
+  text-align: center;
+}

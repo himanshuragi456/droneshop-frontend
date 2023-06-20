@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;  
+}
+
+textarea {
+  resize: none;
+}

@@ -1,0 +1,50 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #F3F5FC;
+  padding-bottom: 64px;
+}
+
+.not-found > img {
+  width: 620px;
+  margin: auto;  
+}
+
+.not-found > h1 {
+  color: #0A1329;
+  font-weight: 600; 
+  font-size: 36px;
+  text-align: center;
+}
+
+.go-back-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0px;
+}
+
+.go-back-button {
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #315BC7;
+  color: #fff;
+  border: 0px;
+  border-radius: 30px;  
+  padding: 16px 44px;  
+  transition: 0.3s ease-in-out;
+  cursor: pointer;  
+}
+
+.go-back-button:hover {
+  background-color: #0539BD;
+}
+
+/* Mobile */
+@media only screen and (max-width: 640px) {
+  .not-found > img {
+    width: 100%;
+    margin: auto;  
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,124 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 99;
+  transition: 0.3s ease-in-out;
+}
+
+.mobile-header-modal {
+  display: none;
+}
+
+.modal-content > iframe {
+  width: 880px;
+  height: 480px;
+}
+
+.modal-content-image > img {
+  max-width: 720px;  
+}
+
+.modal-content-image > p {
+  color: #fff;
+  margin-top: 2px;
+}
+
+/* Mobile */
+@media only screen and (max-width: 1024px) {
+  .modal-content > iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-content-image {
+    padding: 16px;
+  }
+  
+  .modal-content-image > img {
+    max-width: 100%;  
+  }
+
+  .mobile-header-modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #F3F5FC;
+    opacity: 0.97;
+    z-index: 99;
+    padding: 16px;
+  }
+
+  .mobile-header-modal-toggle {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .mobile-header-modal-button {
+    margin-left: auto;
+    background-color: transparent;
+    height: 44px;
+    width: 44px;
+    border: 0px;
+  }
+  
+  .mobile-header-modal-button > svg {
+    color: rgba(0, 0, 0, 0.95);
+    opacity: 0.45;
+  }
+
+  .mobile-header-modal-nav-link {
+    display: flex;
+    flex-direction: column;
+    margin-top: 72px;
+  }
+
+  .mobile-header-modal-nav-link-list {
+    display: flex;
+    flex-direction: column;    
+    margin-bottom: 24px;
+  }
+
+  .mobile-header-modal-nav-link-list > a {
+    color: #0A1329;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .mobile-header-modal-nav-link-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mobile-header-modal-nav-link-button > a {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: #315BC7;
+    background-color: transparent;
+    margin-bottom: 8px;
+  }
+
+  .mobile-header-modal-nav-link-button > button {
+    font-family: 'Rubik', sans-serif; 
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: #315BC7;
+    background-color: transparent;
+    margin-bottom: 8px;
+    border: 0px;
+  }
+}
