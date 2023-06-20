@@ -4,7 +4,7 @@
 ### About
 E-commerce website that sells best quality drones:helicopter:.\
 Built with ReactJS, CSS, and Redux.\
-Frontend/client side of [**DroneShop Backend**](https://github.com/racmathafidz/droneshop-backend).
+Frontend/client side of [**DroneShop Backend**](https://github.com/himanshuragi456/droneshop-backend).
 
 ### Tech Stack
 - [**ReactJS**](https://github.com/facebook/create-react-app)
