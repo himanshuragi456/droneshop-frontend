@@ -31,7 +31,7 @@ export default function SignUpPage() {
   };
 
   const SignUp = (data) => {
-    useSignUp(data, setIsLoading, setmessageResponse, () => {
+    useSignUp(data, setIsLoading, setmessageResponse,
       // SignIn Callback
       useSignIn(
         {
@@ -41,8 +41,8 @@ export default function SignUpPage() {
         SignInAction,
         setIsLoading,
         setmessageResponse,
-      );
-    });
+      )
+    );
   };
 
   useEffect(() => {
