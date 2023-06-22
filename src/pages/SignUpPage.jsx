@@ -33,7 +33,8 @@ export default function SignUpPage() {
   const SignUp = (data) => {
     useSignUp(data, setIsLoading, setmessageResponse,
       // SignIn Callback
-      useSignIn(
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      () => useSignIn(
         {
           email: data.email,
           password: data.password,
