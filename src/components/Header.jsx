@@ -43,7 +43,7 @@ export default function Navbar(props) {
         });
       });
     }
-  }, [userDataState, reRender]);
+  }, [reRender]);
 
   if (userDataState.token && cartState) {
     return (
