@@ -11,7 +11,7 @@ export default function CheckoutPage() {
   useProtectedRoutes(navigate);
 
   useEffect(() => {
-    document.title = 'Checkout | DroneShopID';
+    document.title = 'Checkout | DroneShop';
   });
 
   return (

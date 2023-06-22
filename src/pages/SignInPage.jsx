@@ -40,7 +40,7 @@ export default function SignInPage() {
   }, [userDataState]);
 
   useEffect(() => {
-    document.title = 'Sign In | DroneShopID';
+    document.title = 'Sign In | DroneShop';
   });
 
   if (isLoading) {
@@ -55,7 +55,7 @@ export default function SignInPage() {
       <div className="signin-form">
         <Link to="/" className="auth-logo">
           <img src={BrandLogo} alt="Drone Shop ID" />
-          <p>DroneShopID</p>
+          <p>DroneShop</p>
         </Link>
         <h1 className="auth-title">Sign In To Your Account</h1>
         <GoogleLogin

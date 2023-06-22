@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="company-profile">
         <Link to="/">
           <img src={BrandLogo} alt="Drone Shop ID" />
-          <p>DroneShopID</p>
+          <p>DroneShop</p>
         </Link>
         <p>
           Look up the sky and beautiful
@@ -38,10 +38,10 @@ export default function Footer() {
       </div>
       <div className="company-office">
         <h1>Office</h1>
-        <p>+62852 9040 3236</p>
-        <p>Klaten, Central Java</p>
-        <p>Indonesia</p>
-        <p>rac.hafidz@gmail.com</p>
+        <p>+91 9301420919</p>
+        <p>Indore, Madhya Pradesh</p>
+        <p>India</p>
+        <p>hirehimanshuragi@gmail.com</p>
       </div>
     </footer>
   );

@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 export default function DetailProductPage() {
   useEffect(() => {
-    document.title = 'Page Not Found | DroneShopID';
+    document.title = 'Page Not Found | DroneShop';
   });
 
   return (

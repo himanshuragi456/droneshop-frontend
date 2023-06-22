@@ -36,7 +36,7 @@ export default function AllTransactionPage() {
   }, []);
 
   useEffect(() => {
-    document.title = 'Transaction | DroneShopID';
+    document.title = 'Transaction | DroneShop';
   });
 
   if (transactionData) {

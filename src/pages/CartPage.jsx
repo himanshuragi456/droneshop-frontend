@@ -17,7 +17,7 @@ export default function CartPage() {
   };
 
   useEffect(() => {
-    document.title = 'Cart | DroneShopID';
+    document.title = 'Cart | DroneShop';
   });
 
   return (

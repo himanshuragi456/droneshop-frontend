@@ -29,7 +29,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    document.title = 'DroneShopID';
+    document.title = 'DroneShop';
   });
 
   if (State.ProductsData.ProductsData) {

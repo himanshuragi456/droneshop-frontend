@@ -42,7 +42,7 @@ export default function SuccessCheckoutPage() {
   }, []);
 
   useEffect(() => {
-    document.title = 'Success | DroneShopID';
+    document.title = 'Success | DroneShop';
   });
 
   if (transactionData) {

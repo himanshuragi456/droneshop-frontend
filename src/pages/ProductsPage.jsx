@@ -24,7 +24,7 @@ export default function ProductsPage() {
   }, []);
 
   useEffect(() => {
-    document.title = 'All Products | DroneShopID';
+    document.title = 'All Products | DroneShop';
   });
 
   if (State.ProductsData.ProductsData) {

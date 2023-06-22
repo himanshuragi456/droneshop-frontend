@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 export default function GalleryPage() {
   useEffect(() => {
-    document.title = 'Gallery | DroneShopID';
+    document.title = 'Gallery | DroneShop';
   });
 
   return (

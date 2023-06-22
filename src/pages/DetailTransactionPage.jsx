@@ -46,7 +46,7 @@ export default function DetailTransactionPage() {
   }, [reRender]);
 
   useEffect(() => {
-    document.title = 'Detail Transaction | DroneShopID';
+    document.title = 'Detail Transaction | DroneShop';
   });
 
   if (transactionData || transactionData === null) {

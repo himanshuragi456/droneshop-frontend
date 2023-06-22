@@ -50,7 +50,7 @@ export default function Navbar(props) {
       <header className="navigation">
         <Link to="/" className="nav-logo">
           <img src={BrandLogo} alt="Drone Shop ID" />
-          <p>DroneShopID</p>
+          <p>DroneShop</p>
         </Link>
         <div className="nav-link">
           <Link to="/" className="nav-link-list">Home</Link>
@@ -117,7 +117,7 @@ export default function Navbar(props) {
     <header className="navigation">
       <Link to="/" className="nav-logo">
         <img src={BrandLogo} alt="Drone Shop ID" />
-        <p>DroneShopID</p>
+        <p>DroneShop</p>
       </Link>
       <div className="nav-link">
         <Link to="/" className="nav-link-list">Home</Link>

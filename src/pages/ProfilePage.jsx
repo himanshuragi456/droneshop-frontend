@@ -16,7 +16,7 @@ export default function ProfilePage() {
   const userDataState = encryptedState.DroneShop.DroneShop ? decrypt(encryptedState.DroneShop.DroneShop) : encryptedState.DroneShop;
 
   useEffect(() => {
-    document.title = `${userDataState.fullName} | DroneShopID`;
+    document.title = `${userDataState.fullName} | DroneShop`;
   });
 
   return (
