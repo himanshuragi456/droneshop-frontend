@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { truncateString } from '../helpers';
 
 export default function NewProducts(props) {
   const { ProductsData } = props;
@@ -24,7 +25,7 @@ export default function NewProducts(props) {
                 <img src={items.images} alt={items.name} />
                 <h1 className="products-name">{items.name}</h1>
                 <h1 className="products-price">{items.price}</h1>
-                <p className="products-description">{items.description}</p>
+                <p className="products-description">{truncateString(items.description, 180)}</p>
                 <div className="products-button">
                   <Link to={`/products/${items._id}`}>Go Now</Link>
                 </div>
