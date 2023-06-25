@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import GoogleLogin from 'react-google-login';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useForm } from 'react-hook-form';
@@ -58,16 +58,12 @@ export default function SignInPage() {
           <p>DroneShop</p>
         </Link>
         <h1 className="auth-title">Sign In To Your Account</h1>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          render={(renderProps) => (
-            <GoogleButton onClick={renderProps.onClick} />
-          )}
-          buttonText="Continue with Google"
           onSuccess={AuthGoogle}
           onFailure={AuthGoogle}
-          cookiePolicy="single_host_origin"
         />
+        </GoogleOAuthProvider>
         <p className="auth-or-text">
           <span className="auth-or-text-span">
             OR

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import GoogleLogin from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useForm } from 'react-hook-form';
@@ -14,6 +13,7 @@ import { ActionCreators } from '../redux/actions';
 import useSignUp from '../services/signUp';
 import useSignIn from '../services/signIn';
 import decrypt from '../utils/decrypt';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -71,16 +71,12 @@ export default function SignUpPage() {
           <p>DroneShop</p>
         </Link>
         <h1 className="auth-title">Create New Account</h1>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          render={(renderProps) => (
-            <GoogleButton onClick={renderProps.onClick} />
-          )}
-          buttonText="Continue with Google"
           onSuccess={AuthGoogle}
           onFailure={AuthGoogle}
-          cookiePolicy="single_host_origin"
         />
+        </GoogleOAuthProvider>
         <p className="auth-or-text">
           <span className="auth-or-text-span">
             OR

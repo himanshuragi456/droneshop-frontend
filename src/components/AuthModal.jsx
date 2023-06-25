@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import GoogleLogin from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useForm } from 'react-hook-form';
@@ -10,6 +9,7 @@ import GoogleButton from './GoogleButton';
 import { ActionCreators } from '../redux/actions';
 import useAuthGoogle from '../services/authGoogle';
 import useSignIn from '../services/signIn';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function AuthModal(props) {
   const { isOpen, setIsModalOpen } = props;
@@ -52,16 +52,12 @@ export default function AuthModal(props) {
               </svg>
             </button>
           </div>
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            render={(renderProps) => (
-              <GoogleButton onClick={renderProps.onClick} />
-            )}
-            buttonText="Continue with Google"
-            onSuccess={AuthGoogle}
-            onFailure={AuthGoogle}
-            cookiePolicy="single_host_origin"
-          />
+          <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <GoogleLogin
+          onSuccess={AuthGoogle}
+          onFailure={AuthGoogle}
+        />
+        </GoogleOAuthProvider>
           <p className="auth-or-text">
             <span className="auth-or-text-span">
               OR

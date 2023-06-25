@@ -6,7 +6,7 @@ export default function useAuthGoogle(googleData, SignInAction, setIsModalOpen, 
     {
       method: 'POST',
       data: {
-        token: googleData.tokenId,
+        token: googleData.credential,
       },
       withCredentials: true,
       url: `${process.env.REACT_APP_BASE_URL}/auth/google`,
