@@ -19,6 +19,7 @@ import './assets/styles/testimonial.css';
 import './assets/styles/footer.css';
 import './assets/styles/modal.css';
 import './assets/styles/auth.css';
+import './assets/styles/stripe.css';
 import './assets/styles/google-button.css';
 import './assets/styles/detail-product.css';
 import './assets/styles/cart.css';

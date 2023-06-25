@@ -7,6 +7,11 @@ import postTransaction from '../services/postTransaction';
 import getPriceNumber from '../utils/getPriceNumber';
 import priceFormat from '../utils/priceFormat';
 import decrypt from '../utils/decrypt';
+import useRazorpay from "react-razorpay";
+import StripeModal from './StripeModal';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import createPayment from '../services/createPayment';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -23,6 +28,16 @@ export default function Checkout() {
   const totalItemsArray = [];
   const pattern = '[0-9]*';
 
+  //for stripe payment
+  const [clientSecret, setClientSecret] = useState("");
+  const [IsStripeOpen, setIsStripeOpen] = useState(false);
+  const stripePromise = loadStripe("pk_test_51NMpM9SHofiqml0oHIrAaGImJoAGpt60bwCqtp3O7hYOeYAcsnWfVAFe0FEhx7OyVovDkRtzUGw075FoxkfvrqOU00fvgFD0wL");
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    createPayment(JSON.stringify({ items: [{ id: "xl-tshirt" }] }), userDataState).then((res) => setClientSecret(res.data.clientSecret))
+  }, []);
+
   const getTotal = () => {
     checkoutState.map((items) => totalItemsArray.push(items.quantity));
     setTotalItems(totalItemsArray.reduce((total, num) => total + num));
@@ -37,6 +52,8 @@ export default function Checkout() {
       setPhoneNumberState(phoneNumberState);
     }
   };
+  
+  
 
   const checkoutHandler = () => {
     const payload = {
@@ -48,7 +65,9 @@ export default function Checkout() {
       total: priceFormat(subtotal + (totalItems * 31000) + (totalItems * 10000)),
     };
 
-    postTransaction(payload, userDataState, navigate);
+    // postTransaction(payload, userDataState, navigate);
+    setIsStripeOpen(true)
+    
   };
 
   useEffect(() => {
@@ -56,6 +75,14 @@ export default function Checkout() {
       getTotal();
     }
   }, []);
+
+  const appearance = {
+    theme: 'stripe',
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
 
   if (subtotal && checkoutState !== undefined) {
     return (
@@ -144,6 +171,11 @@ export default function Checkout() {
           </div>
           <button type="button" className="cart-checkout" onClick={checkoutHandler}>Pay</button>
         </div>
+        {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <StripeModal isOpen={IsStripeOpen} />
+        </Elements>
+      )}
       </section>
     );
   }
