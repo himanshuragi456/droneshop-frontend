@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import EmptyCheckout from '../assets/images/Cart/empty.png';
-import postTransaction from '../services/postTransaction';
+import postTransaction, { postOnlineTransaction } from '../services/postTransaction';
 import getPriceNumber from '../utils/getPriceNumber';
 import priceFormat from '../utils/priceFormat';
 import decrypt from '../utils/decrypt';
-import useRazorpay from "react-razorpay";
 import StripeModal from './StripeModal';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -31,11 +30,12 @@ export default function Checkout() {
   //for stripe payment
   const [clientSecret, setClientSecret] = useState("");
   const [IsStripeOpen, setIsStripeOpen] = useState(false);
+  const [IntentID, setIntentID] = useState(null)
   const stripePromise = loadStripe("pk_test_51NMpM9SHofiqml0oHIrAaGImJoAGpt60bwCqtp3O7hYOeYAcsnWfVAFe0FEhx7OyVovDkRtzUGw075FoxkfvrqOU00fvgFD0wL");
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    createPayment(JSON.stringify({ items: [{ id: "xl-tshirt" }] }), userDataState).then((res) => setClientSecret(res.data.clientSecret))
+    createPayment(checkoutState, userDataState).then((res) => setClientSecret(res.data.clientSecret))
   }, []);
 
   const getTotal = () => {
@@ -52,10 +52,8 @@ export default function Checkout() {
       setPhoneNumberState(phoneNumberState);
     }
   };
-  
-  
 
-  const checkoutHandler = () => {
+  const checkoutHandler = async () => {
     const payload = {
       fullName,
       phoneNumber: phoneNumberState,
@@ -65,9 +63,23 @@ export default function Checkout() {
       total: priceFormat(subtotal + (totalItems * 31000) + (totalItems * 10000)),
     };
 
-    // postTransaction(payload, userDataState, navigate);
+    const intentID = await postOnlineTransaction(payload, userDataState);
     setIsStripeOpen(true)
-    
+    setIntentID(intentID)
+  };
+
+  const checkoutHandlerCOD = () => {
+    const payload = {
+      fullName,
+      phoneNumber: phoneNumberState,
+      address: fullAddress,
+      transactionItem: checkoutState,
+      userId: userDataState.id,
+      status: "COD",
+      total: priceFormat(subtotal + (totalItems * 31000) + (totalItems * 10000)),
+    };
+
+    postTransaction(payload, userDataState, navigate);
   };
 
   useEffect(() => {
@@ -169,11 +181,17 @@ export default function Checkout() {
             <p>Total</p>
             <p className="checkout-total-pay-costs">{priceFormat(subtotal + (totalItems * 31000) + (totalItems * 10000))}</p>
           </div>
-          <button type="button" className="cart-checkout" onClick={checkoutHandler}>Pay</button>
+          <button type="button" disabled={!(fullName && phoneNumberState && fullAddress)} className="cart-checkout stripe-button" style={{marginTop: "40px"}} onClick={checkoutHandlerCOD}>Place order (COD)</button>
+          <div style={{display: "flex", justifyContent: "space-between", padding: "5%", alignItems: "center"}}>
+            <div style={{height: "1px", backgroundColor: "#d3d3d3", width: "40%"}}></div>
+            <div>OR</div>
+            <div style={{height: "1px", backgroundColor: "#d3d3d3", width: "40%"}}></div>
+          </div>
+          <button type="button" disabled={!(fullName && phoneNumberState && fullAddress)} className="cart-checkout stripe-button" onClick={checkoutHandler}>Pay Now</button>
         </div>
-        {clientSecret && (
+        {clientSecret && IsStripeOpen && (
         <Elements options={options} stripe={stripePromise}>
-          <StripeModal isOpen={IsStripeOpen} />
+          <StripeModal setIsStripeOpen={setIsStripeOpen} IntentID={IntentID} userDataState={userDataState} />
         </Elements>
       )}
       </section>

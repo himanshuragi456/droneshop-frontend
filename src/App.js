@@ -14,6 +14,7 @@ import ProfilePage from './pages/ProfilePage';
 import AllTransactionPage from './pages/AllTransactionPage';
 import DetailTransactionPage from './pages/DetailTransactionPage';
 import NotFoundPage from './pages/NotFoundPage';
+import PaymentSuccessPage from './pages/PaymentSuccessPage';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
       <Route path="products/:id" element={<DetailProductPage />} />
       <Route path="transaction/:id" element={<DetailTransactionPage />} />
       <Route path="success/:id" element={<SuccessCheckoutPage />} />
+      <Route path="payment/:id" element={<PaymentSuccessPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

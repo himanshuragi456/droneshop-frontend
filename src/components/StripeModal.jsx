@@ -3,14 +3,21 @@ import {
   PaymentElement,
   LinkAuthenticationElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
+import { updateTransaction } from "../services/postTransaction";
+import { useNavigate } from "react-router-dom";
 
-export default function StripeModal({isOpen}) {
+export default function StripeModal({
+  setIsStripeOpen,
+  IntentID,
+  userDataState,
+}) {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,41 +63,81 @@ export default function StripeModal({isOpen}) {
 
     setIsLoading(true);
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
-      },
-    });
+    stripe
+      .confirmPayment({
+        elements,
+        redirect: "if_required",
+        confirmParams: {
+          // Make sure to change this to your payment completion page
+          // return_url: `http://localhost:3000/payment/${IntentID}`,
+        },
+      })
+      .then(() => {
+        // alert('transaction success')
+        const payload = {
+          _id: IntentID,
+          userId: userDataState.id,
+          status: "Payment completed",
+        };
+        updateTransaction(payload, userDataState, navigate);
+      });
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occurred.");
-    }
+    // if (error.type === "card_error" || error.type === "validation_error") {
+    //   setMessage(error.message);
+    // } else {
+    //   setMessage("An unexpected error occurred.");
+    // }
 
     setIsLoading(false);
   };
 
   const paymentElementOptions = {
-    layout: "tabs"
-  }
+    layout: "tabs",
+  };
 
-  if(isOpen){
-    return (
-      <form id="payment-form" className="stripe-modal" onSubmit={handleSubmit}>
+  return (
+    <form id="payment-form" className="stripe-modal" onSubmit={handleSubmit}>
+      <button
+        onClick={() => setIsStripeOpen(false)}
+        className="stripe-button"
+        style={{
+          backgroundColor: "red",
+          borderRadius: "999px",
+          position: "absolute",
+          padding: "5px",
+          height: "26px",
+          width: "26px",
+          top: -10,
+          right: -10,
+        }}
+      >
+        ✖
+      </button>
+      <h4
+        style={{
+          fontSize: "2.4rem",
+          color: "#635bff",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
+        Stripe
+      </h4>
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="stripe-button"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
@@ -98,11 +145,5 @@ export default function StripeModal({isOpen}) {
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
-      );
-  }
-  else{
-    return(
-      <div></div>
-    )
-  }
+  );
 }

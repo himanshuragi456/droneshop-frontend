@@ -1,40 +1,16 @@
-/* #root {
-    display: flex;
-    align-items: center;
-  } */
-  
-  /* body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 100vh;
-    width: 100vw;
-  } */
-
   .stripe-modal {
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
     position: fixed;
-    top: 10%;
-    /* bottom: 0; */
-    width: 50vw;
-    /* height: 100%; */
-    /* right: 10%; */
-    /* right: 0; */
-    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f3f5fc;
     z-index: 99;
   }
   
   #payment-form {
-    /* width: 30vw; */
-    /* min-width: 500px; */
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-      0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+      2px 6px 8px 6px rgba(50, 50, 03, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.09);
     border-radius: 7px;
     padding: 40px;
   }
@@ -53,7 +29,7 @@
   }
   
   /* Buttons and links */
-  button {
+  .stripe-button {
     background: #5469d4;
     font-family: Arial, sans-serif;
     color: #ffffff;
@@ -69,11 +45,11 @@
     width: 100%;
   }
   
-  button:hover {
+  .stripe-button:hover {
     filter: contrast(115%);
   }
   
-  button:disabled {
+  .stripe-button:disabled {
     opacity: 0.5;
     cursor: default;
   }
@@ -144,7 +120,7 @@
   
   @media only screen and (max-width: 600px) {
     #payment-form {
-      width: 80vw;
+      width: 70vw;
       min-width: initial;
     }
   }
