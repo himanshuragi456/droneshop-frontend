@@ -67,7 +67,7 @@ export default function DetailTransaction(props) {
         <div className="detail-transaction-payment">
           <div className="payment-detail">
             <p>Payment method</p>
-            <h1>Bank Jaog</h1>
+            <h1>{TransactionData.status === "Payment completed" ? "Stripe Gateway" : "Cash on delivery"}</h1>
           </div>
           <div className="payment-detail">
             <p>Payment code</p>
@@ -78,11 +78,11 @@ export default function DetailTransaction(props) {
             <h1>{TransactionData.total}</h1>
           </div>
         </div>
-        <div className="cancel-transaction">
+        {/* <div className="cancel-transaction">
           <button type="button" className="cancel-transaction-button" onClick={deleteTransactionItems}>
             Cancel transaction
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

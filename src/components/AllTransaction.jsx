@@ -22,7 +22,7 @@ export default function AllTransaction(props) {
             <p>No transaction</p>
           </div>
         )
-          : TransactionData.map((item) => (
+          : TransactionData.filter((item) => item.status !== "Waiting for payment").map((item) => (
             <Link to={`/transaction/${item._id}`} className="transaction-list">
               {
                 item.transactionItem.map((items) => (
